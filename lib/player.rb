@@ -1,28 +1,33 @@
-# include 'board.rb'
+# require 'board'
 
 class Player
 
-	include Board
-
 	def initialize(name)
 		@name = name
-		@board = Board.new
+		@board = Board.new(name)
+		@ships = 10
 	end
 
 	def name
 		@name
 	end
 
+	def ships
+		@ships
+	end
+
 	def board
 		@board
 	end
-	
-	def shoot(at_coordinates, opponent_board)
-		opponent_board.register_shots_at(at_coordinates)
+
+	def has_ships_still_floating?
+		@ships == !no_of_hits(board)
+	end
+
+
+	def no_of_hits(board)
+		board.hit_count
 	end
 	
-	def has_ships_still_floating?(board)
-		board.hit_count < board.default_lives
-	end
 
 end
