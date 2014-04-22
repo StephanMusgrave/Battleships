@@ -12,4 +12,5 @@ describe Board do
 		expect(board.rows.count).to eq 10
 	end
 
+
 end
