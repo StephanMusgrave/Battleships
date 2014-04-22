@@ -1,16 +1,19 @@
 require 'board'
 
 describe Board do
+  let (:board) {Board.new}
 
 	it 'a row should have 10 positions' do
-		board = Board.new
 		expect(board.row.count).to eq 10
 	end
 
 	it 'board should have 10 rows' do
-		board = Board.new
 		expect(board.rows.count).to eq 10
 	end
 
+  it "can insert an x into a given position" do
+    board.register_shot_at_coordinates('B',3)
+    expect(board.position('B',3)).to eq "x"
+  end
 
 end
