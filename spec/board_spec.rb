@@ -1,4 +1,5 @@
 require 'board'
+require 'array_methods'
 
 describe Board do
   let (:board) {Board.new}
@@ -13,7 +14,9 @@ describe Board do
 
   it "can insert an x into a given position" do
     board.register_shot_at_coordinates('B',3)
-    expect(board.position('B',3)).to eq "x"
+    expect(board.position('B',3)).to eq "o"
   end
+
+
 
 end
