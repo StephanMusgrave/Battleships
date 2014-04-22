@@ -2,7 +2,7 @@ require 'board'
 require 'array_methods'
 
 describe Board do
-  let (:board) {Board.new}
+  let (:board) {Board.new("Will") }
 
 	it 'a row should have 10 positions' do
 		expect(board.row.count).to eq 10
@@ -17,6 +17,9 @@ describe Board do
     expect(board.position('B',3)).to eq "o"
   end
 
+  it 'initializes a new player' do
+  	expect(board.owner).to eq "Will"
+  end
 
 
 end

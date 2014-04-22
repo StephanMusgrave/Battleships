@@ -3,8 +3,9 @@ require_relative 'array_methods'
 
   include ArrayMethods
 
-  def initialize
+  def initialize(player)
     @rows = [row,row,row,row,row,row,row,row,row,row]
+    @player = player  
   end
 
   def row
@@ -15,5 +16,8 @@ require_relative 'array_methods'
   	@rows
   end
 
-  
+  def owner
+    @player
+  end
+
 end
