@@ -1,5 +1,4 @@
 require 'board'
-require 'array_methods'
 
 describe Board do
   let (:board) {Board.new("Will") }
