@@ -29,11 +29,24 @@ class Board
     letter.capitalize.ord - 65
   end 
 
-  def place_ship(size, at_coordinates)
-    row = (at_coordinates.chars[1].to_i) - 1
-    column = char_to_int(at_coordinates.chars[0]) 
-    for(column <= size ; column++) {@rows[row][column] = "s"}
-
+  def place_ship(size, direction, at_coordinates)
+    if direction == "horizontal"  
+      row = (at_coordinates.chars[1].to_i) - 1
+      column = char_to_int(at_coordinates.chars[0]) 
+      end_position = column + size - 1
+      while column <= end_position  
+        @rows[row][column] = "s"
+        column += 1
+      end
+    else
+      row = (at_coordinates.chars[1].to_i) - 1
+      column = char_to_int(at_coordinates.chars[0]) 
+      end_position = row + size - 1
+      while row <= end_position  
+        @rows[row][column] = "s"
+        row += 1
+      end
+    end 
     @rows[row][column]
   end
   
