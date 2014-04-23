@@ -6,7 +6,7 @@ class Player
 
 	def initialize(name)
 		@name = name
-		@board = Board.new(name)
+		@board = Board.new(self)
 		@ships_start = 10
 		@ships = @ships_start
 		@hit_count = 0
