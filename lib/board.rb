@@ -44,8 +44,16 @@ class Board
   def position(at_coordinates)
     row = at_coordinates.chars[1].to_i
     column = at_coordinates.chars[0]
-    puts "#{@rows[row - 1][char_to_int(column)]}"
+    # puts "#{@rows[row - 1][char_to_int(column)]}"
     @rows[row - 1][char_to_int(column)]
+  end
+
+  def opponent_view
+    @rows.each do |row| 
+      row.each do |el|
+        el.gsub('s', '') 
+      end
+    end 
   end
 
 end

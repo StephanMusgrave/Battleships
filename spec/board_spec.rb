@@ -25,16 +25,21 @@ describe Board do
   
   context "Playing the game" do
     
-    it "can insert an o into a given position" do
-      board.register_shot("B3")
+    it "can hit water" do
+      # board.register_shot("B3")
       expect(board.register_shot("B3")).to eq "o"
     end
 
     it 'can hit a ship' do
       board.populate("J3")
-      board.register_shot("J3")
+      # board.register_shot("J3")
       expect(board.register_shot("J3")).to eq "x"
     end 
+
+    it 'shows the openents view of my board without ships' do
+      board.populate("A3")
+      expect(board.opponent_view.include?("s")).to be_false
+    end
 
 
 
