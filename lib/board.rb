@@ -17,15 +17,24 @@ class Board
     @player
   end
 
+  # def place_ship(size, start_position)
+  #   row = (start_position.chars[1].to_i) - 1
+  #   column = (start_position.chars[0]) - 1
+  #   populate(start_position)
+  #   populate(start_position)
+  #   populate(start_position)
+  # end
+
   def char_to_int(letter)
     letter.capitalize.ord - 65
   end 
 
-  def populate(at_coordinates)
-    row = at_coordinates.chars[1].to_i
-    column = at_coordinates.chars[0]
-    @rows[row - 1][char_to_int(column)] = "s"
-    @rows[row - 1][char_to_int(column)]
+  def place_ship(size, at_coordinates)
+    row = (at_coordinates.chars[1].to_i) - 1
+    column = char_to_int(at_coordinates.chars[0]) 
+    for(column <= size ; column++) {@rows[row][column] = "s"}
+
+    @rows[row][column]
   end
   
   def register_shot(at_coordinates)

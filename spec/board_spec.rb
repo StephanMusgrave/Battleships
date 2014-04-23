@@ -17,10 +17,16 @@ describe Board do
     end
 
     it 'can populate board with ships' do
-      board.populate("A1")
-      expect(board.populate("A1")).to eq "s"
+      board.place_ship(1, "A1")
+      expect(board.place_ship(1, "A1")).to eq "s"
     end
 
+    it 'can place a ship on a row' do
+      board.place_ship(3, "A1")
+      expect(board.position("A1")).to eq 's'
+      expect(board.position("B1")).to eq 's'
+      expect(board.position("C1")).to eq 's'
+    end
   end
   
   context "Playing the game" do
@@ -31,13 +37,13 @@ describe Board do
     end
 
     it 'can hit a ship' do
-      board.populate("J3")
+      board.place_ship(1,"J3")
       # board.register_shot("J3")
       expect(board.register_shot("J3")).to eq "x"
     end 
 
     it 'shows the openents view of my board without ships' do
-      board.populate("A3")
+      board.place_ship(1, "A3")
       expect(board.opponent_view.include?("s")).to be_false
     end
 
