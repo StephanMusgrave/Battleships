@@ -17,29 +17,35 @@ class Board
     @player
   end
 
-  def position_of_(letter)
+  def char_to_int(letter)
     letter.capitalize.ord - 65
   end 
 
   def populate(at_coordinates)
     row = at_coordinates.chars[1].to_i
     column = at_coordinates.chars[0]
-    @rows[row - 1][position_of_(column)] = "s"
-    @rows[row - 1][position_of_(column)]
-  en
+    @rows[row - 1][char_to_int(column)] = "s"
+    @rows[row - 1][char_to_int(column)]
   end
   
   def register_shot(at_coordinates)
     row = at_coordinates.chars[1].to_i
     column = at_coordinates.chars[0]
-    @rows[row - 1][position_of_(column)] = "o"
-    @rows[row - 1][position_of_(column)]
+    @rows[row - 1][char_to_int(column)] = hit?(at_coordinates)
+    @rows[row - 1][char_to_int(column)]
   end
 
-  # def position(at_coordinates)
-  #   row = at_coordinates.chars[1].to_i
-  #   column = at_coordinates.chars[0]
-  #   @rows[row - 1][position_of_(column)]
-  # end
+  def hit?(at_coordinates)
+    return "o" if (position(at_coordinates) == "")
+    return "x" if (position(at_coordinates) == "s")
+    return "what?"
+  end
+
+  def position(at_coordinates)
+    row = at_coordinates.chars[1].to_i
+    column = at_coordinates.chars[0]
+    puts "#{@rows[row - 1][char_to_int(column)]}"
+    @rows[row - 1][char_to_int(column)]
+  end
 
 end
