@@ -25,13 +25,15 @@ class Player
 	end
 
 	def has_ships_still_floating?
-		@hit_count < @ships_start
+		@board.rows.flatten.include?("s")
+		# @hit_count = no_of_hits(board)
+		# @hit_count < @ships_start
+
 		# @ships == !no_of_hits(board)
 	end
 
-
 	def no_of_hits(board)
-		board.hit_count
+		@hit_count = board.hit_count
 	end
 	
 

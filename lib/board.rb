@@ -20,13 +20,26 @@ class Board
   def position_of_(letter)
     letter.capitalize.ord - 65
   end 
-  
-  def register_shot_at_coordinates(column, row)
-    @rows[row - 1][position_of_(column)] = "o"
-  end
 
-  def position(column, row)
+  def populate(at_coordinates)
+    row = at_coordinates.chars[1].to_i
+    column = at_coordinates.chars[0]
+    @rows[row - 1][position_of_(column)] = "s"
+    @rows[row - 1][position_of_(column)]
+  en
+  end
+  
+  def register_shot(at_coordinates)
+    row = at_coordinates.chars[1].to_i
+    column = at_coordinates.chars[0]
+    @rows[row - 1][position_of_(column)] = "o"
     @rows[row - 1][position_of_(column)]
   end
+
+  # def position(at_coordinates)
+  #   row = at_coordinates.chars[1].to_i
+  #   column = at_coordinates.chars[0]
+  #   @rows[row - 1][position_of_(column)]
+  # end
 
 end

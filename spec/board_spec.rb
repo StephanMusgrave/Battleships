@@ -11,9 +11,15 @@ describe Board do
 		expect(board.rows.count).to eq 10
 	end
 
-  it "can insert an x into a given position" do
-    board.register_shot_at_coordinates('B',3)
-    expect(board.position('B',3)).to eq "o"
+  it 'can populate board with ships' do
+    board.populate("A1")
+    expect(board.populate("A1")).to eq "s"
+  end
+
+
+  it "can insert an o into a given position" do
+    board.register_shot("B3")
+    expect(board.register_shot("B3")).to eq "o"
   end
 
   it 'initializes a new player' do

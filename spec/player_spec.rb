@@ -16,7 +16,7 @@ describe Player do
 	# 	# player.new_board(board)
 	# end
 
-	it "knows whether is has ships floating" do
+	xit "knows whether is has ships floating" do
 		expect(player).to have_ships_still_floating
 	end
 
@@ -27,13 +27,13 @@ describe Player do
 	it "gets the number of hits from board" do
 		board = double :board
 		expect(board).to receive(:hit_count)
-
 		player.no_of_hits(board)
 	end
 
 	it "knows when there no ships left" do
-		board = double :board, hit_count: 10
-
+		rows = Array.new(10){" "}
+		board = double :board, rows: rows
+		# puts player.no_of_hits(board)
 		expect(player).not_to have_ships_still_floating
 	end
 	
