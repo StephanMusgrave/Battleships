@@ -29,18 +29,23 @@ class Board
     letter.capitalize.ord - 65
   end 
 
+  def convert_coordinates(coordinates)
+    row = (coordinates.chars[1].to_i) - 1
+    column = char_to_int(coordinates.chars[0])
+    array_coordinates = [row, column]
+  end 
+
   def place_ship(size, direction, at_coordinates)
-    if direction == "horizontal"  
-      row = (at_coordinates.chars[1].to_i) - 1
-      column = char_to_int(at_coordinates.chars[0]) 
-      end_position = column + size - 1
+    coordinates = convert_coordinates(at_coordinates) 
+    column = coordinates[1]
+    row = coordinates[0]
+      if direction == "horizontal"  
+        end_position = column + size - 1
       while column <= end_position  
         @rows[row][column] = "s"
         column += 1
       end
     else
-      row = (at_coordinates.chars[1].to_i) - 1
-      column = char_to_int(at_coordinates.chars[0]) 
       end_position = row + size - 1
       while row <= end_position  
         @rows[row][column] = "s"
@@ -51,10 +56,11 @@ class Board
   end
   
   def register_shot(at_coordinates)
-    row = at_coordinates.chars[1].to_i
-    column = at_coordinates.chars[0]
-    @rows[row - 1][char_to_int(column)] = hit?(at_coordinates)
-    @rows[row - 1][char_to_int(column)]
+    coordinates = convert_coordinates(at_coordinates) 
+    column = coordinates[1]
+    row = coordinates[0]
+    @rows[row][column] = hit?(at_coordinates)
+    @rows[row][column]
   end
 
   def hit?(at_coordinates)
@@ -64,10 +70,11 @@ class Board
   end
 
   def position(at_coordinates)
-    row = at_coordinates.chars[1].to_i
-    column = at_coordinates.chars[0]
+    coordinates = convert_coordinates(at_coordinates) 
+    column = coordinates[1]
+    row = coordinates[0]
     # puts "#{@rows[row - 1][char_to_int(column)]}"
-    @rows[row - 1][char_to_int(column)]
+    @rows[row][column]
   end
 
   def opponent_view

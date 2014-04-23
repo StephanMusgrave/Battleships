@@ -16,6 +16,10 @@ describe Board do
       expect(board.rows.count).to eq 10
     end
 
+    it 'can convert A1 format to array coordinates' do
+      expect(board.convert_coordinates("A1")).to eq([0,0])
+    end
+
     it 'can populate board with ships' do
       board.place_ship(1, "horizontal", "A1")
       expect(board.position("A1")).to eq "s"
