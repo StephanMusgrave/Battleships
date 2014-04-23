@@ -34,11 +34,18 @@ describe Board do
 
     it 'can place a ship on a column' do
       board.place_ship(4, "vertical", "F2")
-      print board.rows
       expect(board.position("F2")).to eq 's'
       expect(board.position("F3")).to eq 's'
       expect(board.position("F4")).to eq 's'
       expect(board.position("F5")).to eq 's'
+    end
+
+    xit "it can't place a ship outside the board" do
+      expect{board.place_ship(4, "horizontal", "A8")}.to raise_error(RuntimeError)
+    end
+
+    it "has an inventory of ships" do
+      expect(board.inventory).to eq ({:destroyer => 3, :submarine => 2})
     end
   end
   

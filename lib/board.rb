@@ -3,6 +3,7 @@ class Board
   def initialize(player)
     @rows = [row,row,row,row,row,row,row,row,row,row]
     @player = player  
+    @inventory = {:destroyer => 3, :submarine => 2}
   end
 
   def row
@@ -11,6 +12,10 @@ class Board
 
   def rows
   	@rows
+  end
+
+  def inventory
+    @inventory
   end
 
   def owner
@@ -38,7 +43,7 @@ class Board
   def place_ship(size, direction, at_coordinates)
     coordinates = convert_coordinates(at_coordinates) 
     column = coordinates[1]
-    row = coordinates[0]
+    row = coordinates[0] 
       if direction == "horizontal"  
         end_position = column + size - 1
       while column <= end_position  
