@@ -1,11 +1,15 @@
-# require 'board'
+require_relative 'board'
 
 class Player
+
+# include Board
 
 	def initialize(name)
 		@name = name
 		@board = Board.new(name)
-		@ships = 10
+		@ships_start = 10
+		@ships = @ships_start
+		@hit_count = 0
 	end
 
 	def name
@@ -21,7 +25,8 @@ class Player
 	end
 
 	def has_ships_still_floating?
-		@ships == !no_of_hits(board)
+		@hit_count < @ships_start
+		# @ships == !no_of_hits(board)
 	end
 
 

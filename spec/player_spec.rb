@@ -31,7 +31,7 @@ describe Player do
 		player.no_of_hits(board)
 	end
 
-	it "knows when there a no ships left" do
+	it "knows when there no ships left" do
 		board = double :board, hit_count: 10
 
 		expect(player).not_to have_ships_still_floating
