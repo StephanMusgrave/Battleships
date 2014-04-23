@@ -47,6 +47,10 @@ describe Board do
     it "has an inventory of ships" do
       expect(board.inventory).to eq ({:destroyer => 3, :submarine => 2})
     end
+
+    it "can place a ship starting at a random point and in a random direction" do
+      
+    end
   end
   
   context "Playing the game" do
