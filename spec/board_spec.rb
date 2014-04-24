@@ -74,6 +74,11 @@ describe Board do
     it "a ship can be placed vertically inside of the board" do
       expect(board.can_place_ship?(6, "vertical", "A5")).to be_true    
     end
+
+    it 'cannot place a ship on top of another ship' do
+      board.place_ship(5, "horizontal","b4")
+      expect(board.check_empty_sea?(5, "vertical","d3")).to be_false
+    end
     
   end
   

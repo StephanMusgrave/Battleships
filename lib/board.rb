@@ -34,6 +34,10 @@ class Board
   end
 
   def can_place_ship?(size,direction,coordinates)
+    board_check?(size,direction,coordinates)
+  end
+
+  def board_check?(size,direction,coordinates)
     coordinates = convert_coordinates(coordinates) 
     column = coordinates[1]
     row = coordinates[0] 
@@ -46,6 +50,25 @@ class Board
     else
       true
     end
+  end
+
+  def check_empty_sea?(size,direction,coordinates)
+    coordinates = convert_coordinates(coordinates) 
+    column = coordinates[1]
+    row = coordinates[0] 
+      if direction == "horizontal"  
+        end_position = column + size - 1
+      while column <= end_position  
+        return false if @rows[row][column] == "s"
+        column += 1
+      end
+    else
+      end_position = row + size - 1
+      while row <= end_position  
+        return false if @rows[row][column] == "s"
+        row += 1
+      end
+    end 
   end
 
   def char_to_int(letter)
