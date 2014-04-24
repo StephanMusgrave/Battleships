@@ -41,7 +41,7 @@ describe Board do
     end
 
     it "has an inventory of ships" do
-      expect(board.inventory).to eq ({:destroyer => 3, :submarine => 2})
+      expect(board.inventory).to eq ([5,4,3,3,2])
     end
 
     it "can generate a random start point" do
@@ -60,7 +60,7 @@ describe Board do
     end
 
     it "a ship cannot be placed vertically outside of the board" do
-      expect(board.can_place_ship?(3, "vertical", "A9")).to be_false    
+      expect(board.can_place_ship?(2, "vertical", "A10")).to be_false    
     end
 
     it "a ship cannot be placed horizontally outside of the board" do
@@ -78,6 +78,25 @@ describe Board do
     it 'cannot place a ship on top of another ship' do
       board.place_ship(5, "horizontal","b4")
       expect(board.check_empty_sea?(5, "vertical","d3")).to be_false
+    end
+    it 'can place a ship when it doesnt overlap another ship' do
+      board.place_ship(5, "vertical","b4")
+      expect(board.check_empty_sea?(5, "vertical","d3")).to be_true
+    end
+    
+    it 'cannot place a ship on top of another ship' do
+      board.place_ship(5, "horizontal","b4")
+      expect(board.can_place_ship?(5, "vertical","d3")).to be_false
+    end
+    it 'can place a ship when it doesnt overlap another ship' do
+      board.place_ship(5, "vertical","b4")
+      expect(board.can_place_ship?(5, "vertical","d3")).to be_true
+    end
+
+    it 'can place the inventory of ships on the board' do
+      board.place_inventory
+      expect(board.rows.flatten.count("s")).to eq 17
+      print board.rows
     end
     
   end

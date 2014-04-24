@@ -3,7 +3,7 @@ class Board
   def initialize(player)
     @rows = [row,row,row,row,row,row,row,row,row,row]
     @player = player  
-    @inventory = {:destroyer => 3, :submarine => 2}
+    @inventory = [5,4,3,3,2]
   end
 
   def row
@@ -22,6 +22,19 @@ class Board
     @player
   end
 
+  def place_inventory
+    @inventory.each do|ship|
+      direction = random_direction
+      coords = random_coords
+      while !(can_place_ship?(ship,direction,coords))
+        # puts "while loop triggered"
+        direction = random_direction
+        coords = random_coords
+      end
+      place_ship(ship,direction,coords)
+    end
+  end
+
   def random_coords
     column = [*"A".."J"].sample
     row = [*1..10].sample
@@ -34,7 +47,7 @@ class Board
   end
 
   def can_place_ship?(size,direction,coordinates)
-    board_check?(size,direction,coordinates)
+    board_check?(size,direction,coordinates) && check_empty_sea?(size,direction,coordinates)
   end
 
   def board_check?(size,direction,coordinates)
@@ -69,6 +82,7 @@ class Board
         row += 1
       end
     end 
+    true
   end
 
   def char_to_int(letter)
@@ -76,8 +90,8 @@ class Board
   end 
 
   def convert_coordinates(coordinates)
-    row = (coordinates.chars[1].to_i) - 1
-    column = char_to_int(coordinates.chars[0])
+    row = (coordinates[1..-1].to_i) - 1
+    column = char_to_int(coordinates[0])
     array_coordinates = [row, column]
   end 
 
@@ -85,20 +99,21 @@ class Board
     coordinates = convert_coordinates(at_coordinates) 
     column = coordinates[1]
     row = coordinates[0] 
-      if direction == "horizontal"  
-        end_position = column + size - 1
+    if direction == "horizontal"  
+      end_position = column + size - 1
       while column <= end_position  
         @rows[row][column] = "s"
         column += 1
       end
+      return @rows[row][column - 1]
     else
       end_position = row + size - 1
       while row <= end_position  
         @rows[row][column] = "s"
         row += 1
       end
-    end 
-    @rows[row][column]
+      return @rows[row - 1][column]
+    end
   end
   
   def register_shot(at_coordinates)
