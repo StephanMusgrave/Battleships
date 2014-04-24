@@ -33,6 +33,21 @@ class Board
     ["horizontal", "vertical"].sample
   end
 
+  def can_place_ship?(size,direction,coordinates)
+    coordinates = convert_coordinates(coordinates) 
+    column = coordinates[1]
+    row = coordinates[0] 
+    if direction == "horizontal"  
+      end_position = column + size - 1
+      return (end_position <= 9)
+    elsif direction == "vertical"
+      end_position = row + size - 1
+      return (end_position <= 9)
+    else
+      true
+    end
+  end
+
   def char_to_int(letter)
     letter.capitalize.ord - 65
   end 

@@ -40,10 +40,6 @@ describe Board do
       expect(board.position("F5")).to eq 's'
     end
 
-    xit "it can't place a ship outside the board" do
-      expect{board.place_ship(4, "horizontal", "A8")}.to raise_error(RuntimeError)
-    end
-
     it "has an inventory of ships" do
       expect(board.inventory).to eq ({:destroyer => 3, :submarine => 2})
     end
@@ -63,8 +59,22 @@ describe Board do
       expect(board.rows.flatten.count("s")).to eq 3
     end
 
+    it "a ship cannot be placed vertically outside of the board" do
+      expect(board.can_place_ship?(3, "vertical", "A9")).to be_false    
+    end
 
+    it "a ship cannot be placed horizontally outside of the board" do
+      expect(board.can_place_ship?(3, "horizontal", "J9")).to be_false
+    end
 
+    it "a ship can be placed horizontally inside of the board" do
+      expect(board.can_place_ship?(6, "horizontal", "E2")).to be_true    
+    end
+
+    it "a ship can be placed vertically inside of the board" do
+      expect(board.can_place_ship?(6, "vertical", "A5")).to be_true    
+    end
+    
   end
   
   context "Playing the game" do
