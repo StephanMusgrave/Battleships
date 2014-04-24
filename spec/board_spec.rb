@@ -56,13 +56,11 @@ describe Board do
   context "Playing the game" do
     
     it "can hit water" do
-      # board.register_shot("B3")
       expect(board.register_shot("B3")).to eq "o"
     end
 
     it 'can hit a ship' do
       board.place_ship(1, "horizontal", "J3")
-      # board.register_shot("J3")
       expect(board.register_shot("J3")).to eq "x"
     end 
 

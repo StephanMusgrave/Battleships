@@ -22,14 +22,6 @@ class Board
     @player
   end
 
-  # def place_ship(size, start_position)
-  #   row = (start_position.chars[1].to_i) - 1
-  #   column = (start_position.chars[0]) - 1
-  #   populate(start_position)
-  #   populate(start_position)
-  #   populate(start_position)
-  # end
-
   def char_to_int(letter)
     letter.capitalize.ord - 65
   end 
