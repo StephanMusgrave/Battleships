@@ -22,6 +22,17 @@ class Board
     @player
   end
 
+  def random_coords
+    column = [*"A".."J"].sample
+    row = [*1..10].sample
+
+    coordinates = "#{column}#{row}"
+  end
+
+  def random_direction
+    ["horizontal", "vertical"].sample
+  end
+
   def char_to_int(letter)
     letter.capitalize.ord - 65
   end 
@@ -76,8 +87,8 @@ class Board
 
   def opponent_view
     @rows.each do |row| 
-      row.each do |el|
-        el.gsub('s', '') 
+      row.each do |element|
+        element.gsub('s', '') 
       end
     end 
   end

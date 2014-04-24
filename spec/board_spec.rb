@@ -48,9 +48,23 @@ describe Board do
       expect(board.inventory).to eq ({:destroyer => 3, :submarine => 2})
     end
 
-    it "can place a ship starting at a random point and in a random direction" do
-      
+    it "can generate a random start point" do
+      allow(board).to receive(:random_coords) {"A3"}
+      expect(board.random_coords).to eq "A3"
     end
+
+    it "can generate a random direction" do
+      allow(board).to receive(:random_direction) {"horizontal"}
+      expect(board.random_direction).to eq "horizontal"
+    end
+
+    it "can place a ship in a random position with a random direction" do
+      board.place_ship(3, board.random_direction, board.random_coords)
+      expect(board.rows.flatten.count("s")).to eq 3
+    end
+
+
+
   end
   
   context "Playing the game" do
