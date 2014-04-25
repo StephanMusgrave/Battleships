@@ -13,6 +13,10 @@ class Board
   def rows
   	@rows
   end
+  
+  def to_s
+    "Hello"
+  end
 
   def inventory
     @inventory

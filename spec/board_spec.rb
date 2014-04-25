@@ -55,7 +55,12 @@ describe Board do
     end
 
     it "can place a ship in a random position with a random direction" do
-      board.place_ship(3, board.random_direction, board.random_coords)
+      begin
+        board.place_ship(3, board.random_direction, board.random_coords)
+      rescue
+        puts ">>> #{board}"
+      end
+
       expect(board.rows.flatten.count("s")).to eq 3
     end
 
@@ -96,7 +101,7 @@ describe Board do
     it 'can place the inventory of ships on the board' do
       board.place_inventory
       expect(board.rows.flatten.count("s")).to eq 17
-      print board.rows
+      print board
     end
     
   end
