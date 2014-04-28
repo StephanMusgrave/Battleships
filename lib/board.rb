@@ -4,7 +4,7 @@ class Board
     @rows = [row,row,row,row,row,row,row,row,row,row]
     @player = player  
     @inventory = [5,4,3,3,2]
-    # place_inventory
+    place_inventory
   end
 
   def row
