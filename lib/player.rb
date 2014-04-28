@@ -1,4 +1,4 @@
-# require_relative 'board'
+require_relative 'board'
 
 class Player
 
@@ -9,18 +9,11 @@ class Player
 		@board = Board.new(self)
 	end
 
-	def name
-		@name
-	end
+		attr_reader :name
+		attr_reader :board
 
 	def has_ships_still_floating?
 		@board.ship_count != 0
-
-		# @board.rows.flatten.include?("s")
-		# @hit_count = no_of_hits(board)
-		# @hit_count < @ships_start
-
-		# @ships == !no_of_hits(board)
 	end
 
 	def shoot(at_coordinates, opponent_board)

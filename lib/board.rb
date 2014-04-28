@@ -4,6 +4,7 @@ class Board
     @rows = [row,row,row,row,row,row,row,row,row,row]
     @player = player  
     @inventory = [5,4,3,3,2]
+    # place_inventory
   end
 
   def row
@@ -25,6 +26,11 @@ class Board
   def owner
     @player
   end
+
+  def ship_count
+    rows.flatten.count("s")
+  end
+    
 
   def place_inventory
     @inventory.each do|ship|
