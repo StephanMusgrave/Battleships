@@ -9,7 +9,7 @@ When all the opponents ships have been hit by the game finishes.
 
 This program sets up a board and a player.  these methods will be used by a game server
 
-Instructions to paly the game on the server:
+Instructions to play the game on the server:
 --------------------------------------------
 
 1. create a directory with missing classes (https://makersacademy.hackpad.com/Teamwork-battleships-zaMgmjFWlQY)
