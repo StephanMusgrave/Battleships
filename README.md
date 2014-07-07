@@ -1,4 +1,43 @@
-A program to setup a Battleships game
+# Battleships
+
+## Objectives
+
+## How to run it
+
+## Technologies used
+|Technology                 |Used for                        |
+|---------------------------|--------------------------------|
+|Ruby                       |Programming language            |
+|Object Oriented Programming|  |
+|Test Driven Development  |  |
+
+
+
+## Pairing Partners
+
+[Steve Musgrave],[Oliver Delevingne], [Will Hall] and [Joseph Wolf]
+
+[Steve Musgrave]:https://github.com/StephanMusgrave
+[Oliver Delevingne]:https://github.com/odelevingne
+[Will Hall]:https://github.com/willhall88
+[Joseph Wolf]:https://github.com/josephwolf
+
+
+1. create a directory with missing classes (https://makersacademy.hackpad.com/Teamwork-battleships-zaMgmjFWlQY)
+2. sudo ./bin/start.sh ./dir_name
+3. It'll bind to battleships.server:8010. Update your /etc/hosts accordingly
+4. Once loaded, telnet to it to see if your code works :)
+
+http://github.com/makersacademy/battleships
+
+You need to
+
+gem install eventmachine
+gem install terminal-table
+
+follow the readme except don't run sudoA 
+
+program to setup a Battleships game
 =====================================
 
 Battleships is a game where each player places a number of ships on a board. The board is a 10x10 two dimensional grid.
