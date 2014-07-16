@@ -1,6 +1,7 @@
 # Battleships
+Week 4 project at Makers Academy
 
-## Objectives
+## Learning Objectives
 
 ## How to run it
 
@@ -9,7 +10,7 @@
 |---------------------------|--------------------------------|
 |Ruby                       |Programming language            |
 |Object Oriented Programming|  |
-|Test Driven Development  |  |
+|Rspec                      |Test Driven Development - unit testing  |
 
 
 
@@ -22,7 +23,9 @@
 [Will Hall]:https://github.com/willhall88
 [Joseph Wolf]:https://github.com/josephwolf
 
+## Further work to do
 
+##Project Brief
 1. create a directory with missing classes (https://makersacademy.hackpad.com/Teamwork-battleships-zaMgmjFWlQY)
 2. sudo ./bin/start.sh ./dir_name
 3. It'll bind to battleships.server:8010. Update your /etc/hosts accordingly
