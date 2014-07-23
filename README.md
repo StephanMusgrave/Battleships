@@ -1,5 +1,5 @@
 # Battleships
-Week 4 project at Makers Academy
+Week 4 project at [Makers Academy]
 
 ## Learning Objectives
 
@@ -67,3 +67,4 @@ gem install eventmachine
 gem install terminal-table
 
 follow the readme except don't run sudo
+[Makers Academy]:http://www.makersacademy.com
